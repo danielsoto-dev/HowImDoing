@@ -1,0 +1,29 @@
+.app {
+  text-align: center;
+  font-size: 20px;
+}
+.app-header {
+  background-color: #ff3e3e;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.app-header__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 40px;
+}
+
+.logo {
+  font-size: 40px;
+}
+.link--navbar {
+  text-decoration: none;
+  color: #ffffff;
+  margin-left: 20px;
+}
