@@ -1,0 +1,12 @@
+.grade-list {
+  width: 100%;
+  margin-bottom: 200px;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    @include max-width($max-width: 650px);
+  }
+}

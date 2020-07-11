@@ -2,9 +2,9 @@ import React from "react";
 import NavBar from "./NavBar";
 function Header() {
   return (
-    <header className="app-header">
-      <div className="app-header__container">
-        <div className="logo">HowAmDoing?</div>
+    <header className="header">
+      <div className="header__container">
+        <div className="logo">HowI'mDoing?</div>
         <NavBar></NavBar>
       </div>
     </header>

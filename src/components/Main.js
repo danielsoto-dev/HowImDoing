@@ -1,9 +1,11 @@
 import React from "react";
+import GradesList from "./GradesList";
 function Main() {
   return (
     <div className="main-container">
-      <div className="sideMenu"></div>
-      <div className="courses-list"></div>
+      <h2 className="main-container__title">Ingresa tus notas</h2>
+
+      <GradesList></GradesList>
     </div>
   );
 }

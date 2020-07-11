@@ -1,0 +1,12 @@
+.header__container {
+  @extend %template;
+}
+.logo {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+.link--navbar {
+  text-decoration: none;
+  color: #ffffff;
+  margin-left: 20px;
+}
