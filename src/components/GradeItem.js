@@ -1,29 +1,44 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
-function GradesItem({ onClick, onChange, id }) {
+import { faPlusCircle, faMinusCircle } from "@fortawesome/free-solid-svg-icons";
+function GradesItem({ onAdd, onDelete, onChange, id, name }) {
   const handleChange = (e) => {
     const { name, value } = e.target;
     onChange(name, value, id);
   };
-
+  const handleDelete = () => {
+    console.log("id", id);
+    onDelete(id);
+  };
   return (
     <div id={id} onChange={handleChange} className="grade-item level-1">
       <FontAwesomeIcon
         className="clickable"
-        onClick={onClick}
+        onClick={onAdd}
         icon={faPlusCircle}
       ></FontAwesomeIcon>
+      <FontAwesomeIcon
+        className="clickable"
+        onClick={handleDelete}
+        icon={faMinusCircle}
+      ></FontAwesomeIcon>
       <input
+        className="input--section input--grade"
         name="name"
         placeholder="Asignatura..."
-        className="input--section input--grade"
+        type="text"
+        value={name || ""}
+      />
+      <input
+        className="input--value input--grade"
+        name="grade"
+        placeholder="Nota"
         type="text"
       />
-      <input name="grade" className="input--value input--grade" type="text" />
       <input
-        name="percentage"
         className="input--percentage input--grade"
+        name="percentage"
+        placeholder="%"
         type="text"
       />
     </div>

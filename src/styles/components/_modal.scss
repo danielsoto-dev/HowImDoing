@@ -1,0 +1,21 @@
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-bottom: 100px;
+
+  text-align: center;
+  height: 50vh;
+  &__title {
+    border-bottom: 2px solid $dark-color;
+    font-size: 40px;
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 30px;
+  }
+
+  //   &__content {
+  //   }
+}

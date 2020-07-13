@@ -1,26 +1,17 @@
 import React, { useState } from "react";
 import GradeItem from "./GradeItem";
-
+import getResult from "../utilities/getResult";
 function GradesList() {
-  const [grades, setGrades] = useState([
-    {
-      id: 1,
-      name: "",
-      grade: 0,
-      percentage: 0,
-      childs: [],
-    },
-  ]);
+  const [grades, setGrades] = useState([]);
 
   const handleNewGrade = () => {
     const newState = [
       ...grades,
       {
-        id: grades.length + 1,
+        id: grades.length,
         name: "",
         grade: 0,
         percentage: 0,
-        childs: [],
       },
     ];
     setGrades(newState);
@@ -28,8 +19,8 @@ function GradesList() {
 
   const handleGradeChange = (field, value, id) => {
     const newState = grades;
-    let targetNode = newState[id - 1];
-    newState[id - 1] = {
+    let targetNode = newState[id];
+    newState[id] = {
       ...targetNode,
       [field]: value,
     };
@@ -37,28 +28,37 @@ function GradesList() {
   };
 
   const handleSumbit = () => {
-    const finalGrade = grades.reduce((acc, el) => {
-      return acc + el.grade * (el.percentage / 100);
-    }, 0);
-    console.log(finalGrade);
+    getResult(grades);
+  };
+  const handleDelete = (id) => {
+    console.log("Id to deleted: ", id);
+    const filterState = grades.filter((grade) => {
+      console.log("Current grade.id", grade.id);
+      return grade.id !== id;
+    });
+    console.log(filterState);
+    setGrades(filterState);
   };
 
-  return (
+  console.log("Rendered");
+
+  return grades.length ? (
     <div className="grade-list">
       <div className="grade-list__container">
-        {grades.map((grade) => {
+        {grades.map((grade, idx) => {
           return (
             <GradeItem
-              childs={grade.childs}
-              id={grade.id}
-              key={grade.id}
+              id={idx}
+              key={idx}
+              name={grade.name}
               onChange={handleGradeChange}
-              onClick={handleNewGrade}
+              onAdd={handleNewGrade}
+              onDelete={handleDelete}
             ></GradeItem>
           );
         })}
         <button onClick={handleNewGrade} className="button" type="button">
-          Agrega una Materia
+          Agrega una Corte
         </button>
         <button
           onClick={handleSumbit}
@@ -69,6 +69,13 @@ function GradesList() {
         </button>
       </div>
     </div>
+  ) : (
+    <React.Fragment>
+      <h2>Empiece agregando cortes...</h2>
+      <button onClick={handleNewGrade} className="button" type="button">
+        Agrega una Corte
+      </button>
+    </React.Fragment>
   );
 }
 

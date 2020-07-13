@@ -9,13 +9,13 @@
   min-width: 64px;
   border: 0;
   outline: 0;
-
+  border: 1px solid $dark-color;
   //   font-size: 0.875rem;
   color: $dark-color;
-  font-weight: 500;
+  font-weight: bold;
   line-height: 1.75;
   letter-spacing: 0.02857em;
-  text-transform: uppercase;
+  // text-transform: uppercase;
   text-decoration: none;
   box-sizing: border-box;
 
@@ -28,7 +28,8 @@
 }
 
 .main-button {
-  border: 1px solid $dark-color;
+  background-color: $dark-color;
+  color: $secundary-color;
 }
 .clickable {
   cursor: pointer;
