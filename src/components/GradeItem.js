@@ -1,15 +1,15 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle, faMinusCircle } from "@fortawesome/free-solid-svg-icons";
-function GradesItem({ onAdd, onDelete, onChange, id, name }) {
+function GradesItem({ onAdd, onDelete, onChange, id }) {
   const handleChange = (e) => {
     const { name, value } = e.target;
     onChange(name, value, id);
   };
   const handleDelete = () => {
-    console.log("id", id);
     onDelete(id);
   };
+
   return (
     <div id={id} onChange={handleChange} className="grade-item level-1">
       <FontAwesomeIcon
@@ -27,7 +27,6 @@ function GradesItem({ onAdd, onDelete, onChange, id, name }) {
         name="name"
         placeholder="Asignatura..."
         type="text"
-        value={name || ""}
       />
       <input
         className="input--value input--grade"

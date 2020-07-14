@@ -1,4 +1,3 @@
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 function getResult(array) {
   const results = [0, 0];
   const finalGrade = array.reduce((acc, el) => {

@@ -1,8 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import GradeItem from "./GradeItem";
 import getResult from "../utilities/getResult";
 function GradesList() {
   const [grades, setGrades] = useState([]);
+
+  useEffect(() => {
+    console.log(grades);
+    console.log("I just rerender");
+  });
 
   const handleNewGrade = () => {
     const newState = [
@@ -14,16 +19,18 @@ function GradesList() {
         percentage: 0,
       },
     ];
+
     setGrades(newState);
   };
 
   const handleGradeChange = (field, value, id) => {
-    const newState = grades;
+    const newState = [...grades];
     let targetNode = newState[id];
     newState[id] = {
       ...targetNode,
       [field]: value,
     };
+    console.log(`The ${field} is changing... #ID: ${id}`);
     setGrades(newState);
   };
 
@@ -32,7 +39,8 @@ function GradesList() {
   };
   const handleDelete = (id) => {
     console.log("Id to deleted: ", id);
-    const filterState = grades.filter((grade) => {
+    const newState = [...grades];
+    const filterState = newState.filter((grade) => {
       console.log("Current grade.id", grade.id);
       return grade.id !== id;
     });
@@ -40,12 +48,11 @@ function GradesList() {
     setGrades(filterState);
   };
 
-  console.log("Rendered");
-
   return grades.length ? (
     <div className="grade-list">
       <div className="grade-list__container">
         {grades.map((grade, idx) => {
+          console.log("Mapping...");
           return (
             <GradeItem
               id={idx}
