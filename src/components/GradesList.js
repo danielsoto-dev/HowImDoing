@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import GradeItem from "./GradeItem";
 import getResult from "../utilities/getResult";
+import { ReactComponent as ReactImage } from "../images/empty-list-image.svg";
 function GradesList() {
   const [grades, setGrades] = useState([]);
   const handleNewGrade = () => {
@@ -73,10 +74,11 @@ function GradesList() {
     </div>
   ) : (
     <React.Fragment>
-      <h2>Empiece agregando cortes...</h2>
+      <h2 className="main-container__subtitle ">Empiece agregando cortes...</h2>
       <button onClick={handleNewGrade} className="button" type="button">
         Agrega una Corte
       </button>
+      <ReactImage className="main-image"></ReactImage>
     </React.Fragment>
   );
 }

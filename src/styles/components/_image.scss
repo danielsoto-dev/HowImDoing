@@ -1,0 +1,7 @@
+.main-image {
+  width: 80%;
+  height: 350px;
+  @include breakpoint(tablet) {
+    width: 50%;
+  }
+}
