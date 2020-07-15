@@ -8,7 +8,6 @@ function GradesList() {
     const newState = [
       ...grades,
       {
-        id: grades.length,
         name: "",
         grade: "",
         percentage: "",
@@ -33,10 +32,6 @@ function GradesList() {
   const handleDelete = (id) => {
     const newState = [...grades];
     newState.splice(id, 1);
-    for (let index = id; index < newState.length; index++) {
-      newState[index].id = index - 1;
-    }
-    console.log("newState", newState);
     setGrades(newState);
   };
 
@@ -74,7 +69,9 @@ function GradesList() {
     </div>
   ) : (
     <React.Fragment>
-      <h2 className="main-container__subtitle ">Empiece agregando cortes...</h2>
+      <h2 className="main-container__subtitle ">
+        Comienza agregando un <corte></corte>
+      </h2>
       <button onClick={handleNewGrade} className="button" type="button">
         Agrega una Corte
       </button>
