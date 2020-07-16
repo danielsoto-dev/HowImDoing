@@ -4,7 +4,14 @@ import { faPlusCircle, faMinusCircle } from "@fortawesome/free-solid-svg-icons";
 function GradesItem({ onAdd, onDelete, onChange, values, id }) {
   const { name, grade, percentage } = values;
   const handleChange = (e) => {
+    let regex = /[^0-9.]+/;
+    // 3
     const { name, value } = e.target;
+    const result = regex.exec(value);
+
+    if (name !== "name" && result && value !== "") {
+      return;
+    }
     onChange(name, value, id);
   };
   const handleDelete = () => {

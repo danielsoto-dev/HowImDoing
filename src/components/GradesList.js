@@ -56,7 +56,7 @@ function GradesList() {
           );
         })}
         <button onClick={handleNewGrade} className="button" type="button">
-          Agrega una Corte
+          Agrega un Corte
         </button>
         <button
           onClick={handleSumbit}
@@ -69,9 +69,7 @@ function GradesList() {
     </div>
   ) : (
     <React.Fragment>
-      <h2 className="main-container__subtitle ">
-        Comienza agregando un <corte></corte>
-      </h2>
+      <h2 className="main-container__subtitle ">¡Comencemos!</h2>
       <button onClick={handleNewGrade} className="button" type="button">
         Agrega una Corte
       </button>
