@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import GradeItem from "./GradeItem";
 import getResult from "../utilities/getResult";
 import { ReactComponent as ReactImage } from "../images/empty-list-image.svg";
+
 function GradesList() {
   const [grades, setGrades] = useState([]);
   const handleNewGrade = () => {

@@ -5,7 +5,6 @@ function GradesItem({ onAdd, onDelete, onChange, values, id }) {
   const { name, grade, percentage } = values;
   const handleChange = (e) => {
     let regex = /[^0-9.]+/;
-    // 3
     const { name, value } = e.target;
     const result = regex.exec(value);
 
@@ -33,7 +32,7 @@ function GradesItem({ onAdd, onDelete, onChange, values, id }) {
       <input
         className="input--section input--grade"
         name="name"
-        placeholder="Asignatura..."
+        placeholder="Corte..."
         type="text"
         value={name}
         onChange={foo}

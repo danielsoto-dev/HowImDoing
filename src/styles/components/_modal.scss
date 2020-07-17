@@ -1,13 +1,14 @@
 .modal {
   display: flex;
+  border: 1px solid $dark-color;
   flex-direction: column;
-  justify-content: center;
+  // justify-content: center;
   align-items: center;
   margin: 0 auto;
   margin-bottom: 100px;
 
   text-align: center;
-  height: 50vh;
+  height: 200px;
   &__title {
     border-bottom: 2px solid $dark-color;
     font-size: 40px;
