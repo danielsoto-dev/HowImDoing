@@ -1,12 +1,13 @@
 .modal {
+  position: fixed;
   display: flex;
   border: 1px solid $dark-color;
   flex-direction: column;
   // justify-content: center;
   align-items: center;
   margin: 0 auto;
-  margin-bottom: 100px;
-
+  // margin-bottom: 100px;
+  background-color: $secundary-color;
   text-align: center;
   height: 200px;
   &__title {
@@ -16,7 +17,4 @@
     padding: 20px;
     margin-bottom: 30px;
   }
-
-  //   &__content {
-  //   }
 }

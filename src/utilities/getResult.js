@@ -5,9 +5,6 @@ function getResult(array) {
     return acc + el.grade * (el.percentage / 100);
   }, 0);
   results[0] = finalGrade;
-  console.log(results);
-  let remaining = undefined;
-  console.log(`Necesitas un ${remaining} en el ${results[1]}% restante`);
-  return finalGrade;
+  return results;
 }
 export default getResult;

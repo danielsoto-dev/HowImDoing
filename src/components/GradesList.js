@@ -1,45 +1,50 @@
 import React, { useState } from "react";
 import GradeItem from "./GradeItem";
 import getResult from "../utilities/getResult";
+import { ResultsContext } from "../contexts/ResultsContext";
 import { ReactComponent as ReactImage } from "../images/empty-list-image.svg";
+import { useContext } from "react";
 
 function GradesList() {
-  const [grades, setGrades] = useState([]);
+  const [gradesList, setGradesList] = useState([]);
+  const { setResults } = useContext(ResultsContext);
+  // debugger;
   const handleNewGrade = () => {
     const newState = [
-      ...grades,
+      ...gradesList,
       {
         name: "",
         grade: "",
         percentage: "",
       },
     ];
-    setGrades(newState);
+    setGradesList(newState);
   };
 
   const handleGradeChange = (field, value, id) => {
-    const newState = [...grades];
+    const newState = [...gradesList];
     let targetNode = newState[id];
     newState[id] = {
       ...targetNode,
       [field]: value,
     };
-    setGrades(newState);
+    setGradesList(newState);
   };
 
   const handleSumbit = () => {
-    getResult(grades);
+    const [remaining, remainingPercentage] = getResult(gradesList);
+    setResults({ remaining, remainingPercentage });
   };
   const handleDelete = (id) => {
-    const newState = [...grades];
+    const newState = [...gradesList];
     newState.splice(id, 1);
-    setGrades(newState);
+    setGradesList(newState);
   };
 
-  return grades.length ? (
+  return gradesList.length ? (
     <div className="grade-list">
       <div className="grade-list__container">
-        {grades.map((grade, idx) => {
+        {gradesList.map((grade, idx) => {
           const values = {
             name: grade.name,
             grade: grade.grade,
