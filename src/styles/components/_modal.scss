@@ -1,15 +1,8 @@
 .modal {
-  position: fixed;
-  display: flex;
-  border: 1px solid $dark-color;
-  flex-direction: column;
-  // justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-  // margin-bottom: 100px;
-  background-color: $secundary-color;
+  border-radius: 15px;
+  padding: 20px;
+  background-color: white;
   text-align: center;
-  height: 200px;
   &__title {
     border-bottom: 2px solid $dark-color;
     font-size: 40px;
@@ -17,4 +10,20 @@
     padding: 20px;
     margin-bottom: 30px;
   }
+  &__content {
+    font-size: 20px;
+    margin: 20px;
+  }
+}
+
+.wrapper {
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+  left: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba($color: black, $alpha: 0.3);
 }

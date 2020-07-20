@@ -8,7 +8,6 @@ export default function useOutsideObserver(ref, cb) {
     /**
      * Alert if clicked on outside of element
      */
-    console.log("I rerender cuz useEffect Hook", ref);
     function handleClickOutside(event) {
       if (ref.current && !ref.current.contains(event.target)) {
         cb();

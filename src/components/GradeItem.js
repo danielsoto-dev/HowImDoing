@@ -7,6 +7,9 @@ function GradesItem({ onAdd, onDelete, onChange, values, id }) {
     let regex = /[^0-9.]+/;
     const { name, value } = e.target;
     const result = regex.exec(value);
+    if (isNaN(value)) {
+      console.log("Not a number");
+    }
 
     if (name !== "name" && result && value !== "") {
       return;
