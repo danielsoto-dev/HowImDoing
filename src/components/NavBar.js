@@ -1,11 +1,20 @@
 import React from "react";
+import { useConfigModal } from "../contexts/ModalsContext";
+
 function Header() {
+  const { setConfigModal } = useConfigModal();
+  const handleClick = (e) => {
+    e.preventDefault();
+    setConfigModal(true);
+  };
   return (
     <nav className="navbar">
-      <a className="link--navbar" aria-label="profile" href="/">
-        Materias
-      </a>
-      <a className="link--navbar" aria-label="settings" href="/">
+      <a
+        onClick={handleClick}
+        className="link--navbar"
+        aria-label="settings"
+        href="/"
+      >
         Configuración
       </a>
     </nav>

@@ -13,6 +13,9 @@
   &::placeholder {
     color: $dark-color;
   }
+  &:focus {
+    border: 1px solid $dark-color;
+  }
 }
 
 .input--percentage {

@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import GradeItem from "./GradeItem";
 import getResult from "../utilities/getResult";
-import { ResultsContext } from "../contexts/ResultsContext";
 import { ReactComponent as ReactImage } from "../images/empty-list-image.svg";
-import { useContext } from "react";
+import { useResults, useConfig } from "../contexts/GradesContext";
+import { useResultsModal } from "../contexts/ModalsContext";
 
 function GradesList() {
   const [gradesList, setGradesList] = useState([]);
-  const { setResults } = useContext(ResultsContext);
+  const { setResultModal } = useResultsModal();
+  const { config } = useConfig();
+  const { setResults } = useResults();
   // debugger;
   const handleNewGrade = () => {
     const newState = [
@@ -32,8 +34,13 @@ function GradesList() {
   };
 
   const handleSumbit = () => {
-    const [remaining, remainingPercentage] = getResult(gradesList);
+    const { desiredGrade } = config;
+    const [remaining, remainingPercentage] = getResult(
+      gradesList,
+      desiredGrade
+    );
     setResults({ remaining, remainingPercentage });
+    setResultModal(true);
   };
   const handleDelete = (id) => {
     const newState = [...gradesList];

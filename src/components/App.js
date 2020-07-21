@@ -1,18 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
-import { ResultsContext } from "../contexts/ResultsContext";
+import ModalProvider from "../contexts/ModalsContext";
+import GradesProvider from "../contexts/GradesContext";
+
 import "../styles/App.scss";
 
 function App() {
-  const [results, setResults] = useState({});
   return (
     <div className="app">
-      <Header></Header>
-      <ResultsContext.Provider value={{ results, setResults }}>
-        <Main></Main>
-      </ResultsContext.Provider>
+      <ModalProvider>
+        <GradesProvider>
+          <Header></Header>
+          <Main></Main>
+        </GradesProvider>
+      </ModalProvider>
       <Footer></Footer>
     </div>
   );

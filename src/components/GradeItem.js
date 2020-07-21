@@ -1,18 +1,13 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle, faMinusCircle } from "@fortawesome/free-solid-svg-icons";
+import isAValidNumber from "../utilities/isAValidNumber";
 function GradesItem({ onAdd, onDelete, onChange, values, id }) {
   const { name, grade, percentage } = values;
   const handleChange = (e) => {
-    let regex = /[^0-9.]+/;
     const { name, value } = e.target;
-    const result = regex.exec(value);
-    if (isNaN(value)) {
-      console.log("Not a number");
-    }
-
-    if (name !== "name" && result && value !== "") {
-      return;
+    if (name !== "name" && !isAValidNumber(value)) {
+      return "";
     }
     onChange(name, value, id);
   };

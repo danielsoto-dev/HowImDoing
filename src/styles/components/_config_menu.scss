@@ -1,0 +1,26 @@
+.input--config {
+  outline: none;
+  height: 25px;
+  padding: 1px 10px;
+  margin-left: 20px;
+  border: solid 1px #d5d5d5;
+  box-shadow: inset 0 0 2px rgba(1, 1, 1, 0.15);
+  background-color: $secundary-color;
+  &::placeholder {
+    color: $dark-color;
+  }
+  &:focus {
+    border: 1px solid $dark-color;
+  }
+}
+.form {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: auto minmax(50px, 100px);
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+@include breakpoint(tablet) {
+}

@@ -1,6 +1,4 @@
-function getResult(array) {
-  // const MAX_GRADE = 5;
-  const MIN_GRADE = 3;
+function getResult(array, MIN_GRADE = 3) {
   const results = [0, 0];
   const finalGrade = array.reduce((acc, el) => {
     results[1] += +el.percentage;
