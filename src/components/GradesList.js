@@ -7,6 +7,7 @@ import { useResultsModal } from "../contexts/ModalsContext";
 
 function GradesList() {
   const [gradesList, setGradesList] = useState([]);
+  const [error, setError] = useState(false);
   const { setResultModal } = useResultsModal();
   const { config } = useConfig();
   const { setResults } = useResults();
@@ -22,7 +23,6 @@ function GradesList() {
     ];
     setGradesList(newState);
   };
-
   const handleGradeChange = (field, value, id) => {
     const newState = [...gradesList];
     let targetNode = newState[id];
@@ -32,13 +32,16 @@ function GradesList() {
     };
     setGradesList(newState);
   };
-
   const handleSumbit = () => {
     const { desiredGrade } = config;
     const [remaining, remainingPercentage] = getResult(
       gradesList,
       desiredGrade
     );
+    if (remainingPercentage < 0) {
+      setError(true);
+      return null;
+    }
     setResults({ remaining, remainingPercentage });
     setResultModal(true);
   };
@@ -57,6 +60,8 @@ function GradesList() {
             grade: grade.grade,
             percentage: grade.percentage,
           };
+          // let result = values.grade > 5 ? true : false;
+
           return (
             <GradeItem
               id={idx}
@@ -73,10 +78,11 @@ function GradesList() {
         </button>
         <button
           onClick={handleSumbit}
-          className="button main-button"
+          className={`button ${!error ? "main-button" : "button--error"}`}
+          disabled={error}
           type="button"
         >
-          Calcular Nota
+          {!error ? "Calcular Nota" : "Datos Invalidos"}
         </button>
       </div>
     </div>

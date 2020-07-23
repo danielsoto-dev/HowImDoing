@@ -26,7 +26,12 @@
     border: 1px solid $darker-primary;
   }
 }
-
+.button--error {
+  background-color: #d1202c;
+  border: 1px solid $secundary-color;
+  color: $secundary-color;
+  cursor: no-drop;
+}
 .main-button {
   background-color: $dark-color;
   color: $secundary-color;
