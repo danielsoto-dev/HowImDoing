@@ -7,7 +7,7 @@ function getResult(array, MIN_GRADE = 3) {
   const remaining_percentage = 100 - results[1];
   const remaining_grade =
     100 * ((MIN_GRADE - finalGrade) / remaining_percentage);
-  let result = remaining_percentage !== 0 ? remaining_grade : finalGrade;
+  let result = remaining_percentage === 0 ? finalGrade : remaining_grade;
 
   results[0] = result.toFixed(3);
   results[1] = remaining_percentage;

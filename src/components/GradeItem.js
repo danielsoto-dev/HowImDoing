@@ -2,10 +2,14 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle, faMinusCircle } from "@fortawesome/free-solid-svg-icons";
 import isAValidNumber from "../utilities/isAValidNumber";
+import { useConfig } from "../contexts/GradesContext";
+
 function GradesItem({ onAdd, onDelete, onChange, values, id }) {
   const { name, grade, percentage } = values;
+  const { config } = useConfig();
   const handleChange = (e) => {
     const { name, value } = e.target;
+    console.log("name, value", name, value);
     if (name !== "name" && !isAValidNumber(value)) {
       return "";
     }
@@ -30,26 +34,35 @@ function GradesItem({ onAdd, onDelete, onChange, values, id }) {
       <input
         className="input--section input--grade"
         name="name"
-        placeholder="Corte..."
+        placeholder="Nombre del corte..."
         type="text"
         value={name}
         onChange={foo}
+        autoFocus
       />
       <input
         className="input--value input--grade"
         name="grade"
         placeholder="Nota"
-        type="text"
+        type="number"
         value={grade}
         onChange={foo}
+        min={0}
+        max={config.maxGrade}
+        step={0.01}
+        required
       />
       <input
         className="input--percentage input--grade"
         name="percentage"
         placeholder="%"
-        type="text"
+        type="number"
         value={percentage}
         onChange={foo}
+        min={0}
+        max={100}
+        step={0.01}
+        required
       />
     </div>
   );

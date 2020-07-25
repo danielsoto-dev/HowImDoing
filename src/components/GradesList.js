@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import GradeItem from "./GradeItem";
 import getResult from "../utilities/getResult";
-import { ReactComponent as ReactImage } from "../images/empty-list-image.svg";
 import { useResults, useConfig } from "../contexts/GradesContext";
 import { useResultsModal } from "../contexts/ModalsContext";
+import EmptyGradesList from "./EmptyGradesList";
 
 function GradesList() {
   const [gradesList, setGradesList] = useState([]);
@@ -31,8 +31,11 @@ function GradesList() {
       [field]: value,
     };
     setGradesList(newState);
+    //! Ineficiente.
+    setError(false);
   };
-  const handleSumbit = () => {
+  const handleSumbit = (e) => {
+    e.preventDefault();
     const { desiredGrade } = config;
     const [remaining, remainingPercentage] = getResult(
       gradesList,
@@ -53,14 +56,13 @@ function GradesList() {
 
   return gradesList.length ? (
     <div className="grade-list">
-      <div className="grade-list__container">
+      <form className="grade-list__form" onSubmit={handleSumbit}>
         {gradesList.map((grade, idx) => {
           const values = {
             name: grade.name,
             grade: grade.grade,
             percentage: grade.percentage,
           };
-          // let result = values.grade > 5 ? true : false;
 
           return (
             <GradeItem
@@ -77,23 +79,16 @@ function GradesList() {
           Agrega un Corte
         </button>
         <button
-          onClick={handleSumbit}
           className={`button ${!error ? "main-button" : "button--error"}`}
           disabled={error}
-          type="button"
+          type="submit"
         >
-          {!error ? "Calcular Nota" : "Datos Invalidos"}
+          {!error ? "Calcular Nota" : "Porcentages Invalidos"}
         </button>
-      </div>
+      </form>
     </div>
   ) : (
-    <React.Fragment>
-      <h2 className="main-container__subtitle ">¡Comencemos!</h2>
-      <button onClick={handleNewGrade} className="button" type="button">
-        Agrega una Corte
-      </button>
-      <ReactImage className="main-image"></ReactImage>
-    </React.Fragment>
+    <EmptyGradesList onClick={handleNewGrade}></EmptyGradesList>
   );
 }
 

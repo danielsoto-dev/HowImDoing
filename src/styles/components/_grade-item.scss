@@ -13,9 +13,6 @@
   &::placeholder {
     color: $dark-color;
   }
-  &:focus {
-    border: 1px solid $dark-color;
-  }
 }
 
 .input--percentage {
@@ -55,6 +52,8 @@
   }
 }
 
-.red {
-  background-color: #303030;
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
