@@ -13,6 +13,7 @@ function ConfigForm() {
     desiredGrade,
     maxGrade,
   });
+
   const handleSubmit = () => {
     setConfig(formData);
     setConfigModal(false);

@@ -1,18 +1,18 @@
-@import "./abstracts/variables";
-@import "./abstracts/mixins";
+@import './abstracts/variables';
+@import './abstracts/mixins';
 //Resets
-@import "./base/normalize";
-@import "./base/reset";
+@import './base/normalize';
+@import './base/reset';
 //Layouts
-@import "./layout/body";
-@import "./layout/hos";
-@import "./layout/header";
-@import "./layout/main-container";
-@import "./layout/footer";
+@import './layout/body';
+@import './layout/hos';
+@import './layout/header';
+@import './layout/main-container';
+@import './layout/footer';
 //Components
-@import "./components/config_menu";
-@import "./components/image";
-@import "./components/grade-list";
-@import "./components/grade-item";
-@import "./components/button";
-@import "./components/modal";
+@import './components/config_menu';
+@import './components/image';
+@import './components/grade-list';
+@import './components/grade-item';
+@import './components/button';
+@import './components/modal';
